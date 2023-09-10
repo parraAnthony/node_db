@@ -1,4 +1,4 @@
-const { getAllMovies, moviePost, setMovieActors, setMovieDirectors, setMovieGenres } = require('../controllers/movie.controllers');
+const { getAllMovies, moviePost, setMovieActors, setMovieDirectors, setMovieGenres, updateMovie } = require('../controllers/movie.controllers');
 const {getAllActors, actorPost, removeActor, updateActor} = require("../controllers/Actor.controllers");
 const { getAllDirectors, directorPost, removeDirector, updateDirector } = require('../controllers/Director.controllers');
 const express = require('express');
@@ -9,6 +9,8 @@ const movieRouter = express.Router();
 movieRouter.route("/")
 	.get(getAllMovies)
         .post(moviePost)
+movieRouter.route("/:id")
+        .put(updateMovie)
 
 movieRouter.route("/actors")
         .get(getAllActors)

@@ -19,6 +19,16 @@ const moviePost = catchError(async(req, res)=>{
     })
     return res.status(201).json(newMovie)
 })
+const updateMovie = catchError(async(req, res)=>{
+    const {id} = req.params;
+    const movie = await Movie.update({
+        name,
+        image, 
+        synopsis, 
+        realeaseYear
+    }, {where: {id}, returning: true})
+    res.json(movie)
+})
 const setMovieActors = catchError(async(req, res)=>{
     const { id } = req.params;
     if(id==0){return res.sendStatus(404)}
@@ -47,6 +57,7 @@ const setMovieGenres = catchError(async(req, res)=>{
 module.exports = {
     getAllMovies,
     moviePost,
+    updateMovie,
     setMovieActors,
     setMovieDirectors,
     setMovieGenres
