@@ -29,6 +29,13 @@ const updateMovie = catchError(async(req, res)=>{
     }, {where: {id}, returning: true})
     res.json(movie)
 })
+
+const removeMovie = catchError(async(req, res)=>{
+    const { id } = req.params;
+    await Movie.destroy({ where: {id} })
+    return res.sendStatus(204)
+})
+
 const setMovieActors = catchError(async(req, res)=>{
     const { id } = req.params;
     if(id==0){return res.sendStatus(404)}
@@ -58,6 +65,7 @@ module.exports = {
     getAllMovies,
     moviePost,
     updateMovie,
+    removeMovie,
     setMovieActors,
     setMovieDirectors,
     setMovieGenres

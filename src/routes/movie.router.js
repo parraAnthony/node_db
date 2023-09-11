@@ -1,8 +1,8 @@
-const { getAllMovies, moviePost, setMovieActors, setMovieDirectors, setMovieGenres, updateMovie } = require('../controllers/movie.controllers');
+const { getAllMovies, moviePost, setMovieActors, setMovieDirectors, setMovieGenres, updateMovie, removeMovie } = require('../controllers/movie.controllers');
 const {getAllActors, actorPost, removeActor, updateActor} = require("../controllers/Actor.controllers");
 const { getAllDirectors, directorPost, removeDirector, updateDirector } = require('../controllers/Director.controllers');
 const express = require('express');
-const { getAllGenre, postGenre } = require('../controllers/Genre.controlles');
+const { getAllGenre, postGenre, removeGenre } = require('../controllers/Genre.controlles');
 
 const movieRouter = express.Router();
 
@@ -11,6 +11,7 @@ movieRouter.route("/")
         .post(moviePost)
 movieRouter.route("/:id")
         .put(updateMovie)
+        .delete(removeMovie)
 
 movieRouter.route("/actors")
         .get(getAllActors)
@@ -29,6 +30,8 @@ movieRouter.route("/directors/:id")
 movieRouter.route("/genres")
         .get(getAllGenre)
         .post(postGenre)
+movieRouter.route("/genres/:id")
+        .delete(removeGenre)
 
 movieRouter.route("/:id/genres")
         .post(setMovieGenres)

@@ -12,9 +12,15 @@ const postGenre = catchError(async(req, res)=>{
     })
     return res.status(201).json(genre)
 })
+const removeGenre = catchError(async(req, res)=>{
+    const { id } = req.params;
+    await Genre.destroy({ where: {id} })
+    return res.sendStatus(204)
+})
 
 
 module.exports = {
     getAllGenre,
-    postGenre
+    postGenre,
+    removeGenre
 }
