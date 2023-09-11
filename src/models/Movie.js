@@ -15,9 +15,9 @@ const Movie = sequelize.define('movie', {
         type: DataTypes.TEXT,
         allowNull:false
     },
-    realeaseYear: {
+    releaseYear: {
         type: DataTypes.DATEONLY,
-        allowNull: false
+        
     }
 });
 
