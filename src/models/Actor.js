@@ -5,11 +5,11 @@ const Actor = sequelize.define('actor', {
     // Definimos las columnas aquí
     firtsName: {
         type: DataTypes.STRING(50),
-        allowNull: false
+        
     },
     lastName: {
         type: DataTypes.STRING(50),
-        allowNull: false
+        
     },
     nationality: {
         type: DataTypes.STRING(100),
