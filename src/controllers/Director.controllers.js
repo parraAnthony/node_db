@@ -8,9 +8,9 @@ const getAllDirectors = catchError(async(req, res) => {
     return res.json(director)
 });
 const directorPost = catchError(async(req, res)=>{
-    const { firtsName, lastName, nationality, image, birthday} = req.body
+    const { firstName, lastName, nationality, image, birthday} = req.body
     const newDirector = await Director.create( {
-        firtsName,
+        firstName,
         lastName,
         nationality,
         image,
@@ -26,9 +26,9 @@ const removeDirector = catchError(async(req, res)=>{
 })
 const updateDirector = catchError(async(req, res)=>{
     const {id}= req.params;
-    const { firtsName, lastName, nationality, image, birthday} = req.body
+    const { firstName, lastName, nationality, image, birthday} = req.body
     const director = await Director.update( {
-        firtsName,
+        firstName,
         lastName,
         nationality,
         image,

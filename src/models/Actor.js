@@ -3,7 +3,7 @@ const sequelize = require('../utils/connection');
    // En Mayúsculas y singular      // en minúsculas y singular
 const Actor = sequelize.define('actor', {
     // Definimos las columnas aquí
-    firtsName: {
+    firstName: {
         type: DataTypes.STRING(50),
         allowNull: false
     },

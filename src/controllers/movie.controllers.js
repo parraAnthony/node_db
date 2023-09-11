@@ -10,12 +10,12 @@ const getAllMovies = catchError(async(req, res) => {
     return res.json(movie)
 });
 const moviePost = catchError(async(req, res)=>{
-    const { name, image, synopsis, realeaseYear} = req.body
+    const { name, image, synopsis, releaseYear} = req.body
     const newMovie = await Movie.create({
         name,
         image, 
         synopsis, 
-        realeaseYear
+        releaseYear
     })
     return res.status(201).json(newMovie)
 })
@@ -25,7 +25,7 @@ const updateMovie = catchError(async(req, res)=>{
         name,
         image, 
         synopsis, 
-        realeaseYear
+        releaseYear
     }, {where: {id}, returning: true})
     res.json(movie)
 })
