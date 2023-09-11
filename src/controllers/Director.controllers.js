@@ -26,10 +26,10 @@ const removeDirector = catchError(async(req, res)=>{
 })
 const updateDirector = catchError(async(req, res)=>{
     const {id}= req.params;
-    const { firts_name, last_name, nationality, image, birthday} = req.body
+    const { firtsName, lastName, nationality, image, birthday} = req.body
     const director = await Director.update( {
-        firts_name,
-        last_name,
+        firtsName,
+        lastName,
         nationality,
         image,
         birthday
