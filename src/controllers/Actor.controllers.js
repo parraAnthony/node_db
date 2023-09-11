@@ -8,10 +8,10 @@ const getAllActors = catchError(async(req, res) => {
     return res.json(actor)
 });
 const actorPost = catchError(async (req, res) => {
-    const { firts_name, last_name, nationality, image, birthday} = req.body
+    const { firtsName, lastName, nationality, image, birthday} = req.body
     const newActor = await Actor.create( {
-        firts_name,
-        last_name,
+        firtsName,
+        lastName,
         nationality,
         image,
         birthday
