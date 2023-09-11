@@ -3,11 +3,11 @@ const sequelize = require('../utils/connection');
    // En Mayúsculas y singular      // en minúsculas y singular
 const Director = sequelize.define('director', {
     // Definimos las columnas aquí
-    firts_name: {
+    firtsName: {
         type: DataTypes.STRING(50),
         allowNull: false
     },
-    last_name: {
+    lastName: {
         type: DataTypes.STRING(50),
         allowNull: false
     },
