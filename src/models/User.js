@@ -3,27 +3,40 @@ const sequelize = require('../utils/connection');
    // En Mayúsculas y singular      // en minúsculas y singular
 const User = sequelize.define('user', {
     // Definimos las columnas aquí
-    first_name: {
-        type: DataTypes.STRING(50),
-        allowNull: false
-    },
-    last_name: {
-        type: DataTypes.STRING(50),
-        allowNull: false
-    },
     email: {
-        type: DataTypes.STRING(150),
-        allowNull: false
-
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     },
     password: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    firstName: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
+    lastName: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
+    country: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    birthday: {
-        type: DataTypes.DATEONLY,
+    image: {
+        type: DataTypes.TEXT,
         allowNull: false
+    },
+    isVerified: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 });
-
+User.prototype.toJSON = function () {
+    const values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+}
 module.exports = User;
