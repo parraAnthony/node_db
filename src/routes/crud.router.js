@@ -1,4 +1,4 @@
-const { getAll, createCrud, getOneCrud, deleteCrud, updateCrud } = require('../controllers/crud.controllers');
+const { getAll, createCrud, getOneCrud, deleteCrud, updateCrud } = require('../controllers/Crud.controllers');
 const express = require('express');
 
 const CrudRouter = express.Router();
