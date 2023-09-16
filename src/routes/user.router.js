@@ -17,7 +17,7 @@ userRouter.route("/login")
 userRouter.route("/reset_password")
                 .post(resetpassword)
 
-userRouter.route("/auth/verify_email/:code")
+userRouter.route("/auth/verify/:code")
                 .get(verifiyEmail)
 
 userRouter.route("/auth/reset_password/:code")
