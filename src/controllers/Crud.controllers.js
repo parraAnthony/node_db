@@ -1,6 +1,5 @@
 const catchError = require('../utils/catchError');
 const Crud = require('../models/Crud');
-const { where } = require('sequelize');
 
 const getAll = catchError(async(req, res) => {
     const  cruds = await Crud.findAll();
