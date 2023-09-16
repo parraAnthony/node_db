@@ -56,7 +56,7 @@ const create = catchError(async(req, res) => {
         `
     })
     // Operaciones...
-    return res.status(201).json(newUser)
+    return res.json(newUser)
 });
 
 const remove = catchError(async(req, res)=>{
