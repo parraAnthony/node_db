@@ -25,7 +25,7 @@ userRouter.route("/auth/reset_password/:code")
 
 userRouter.route("/:id")
                 .get(verifyJWT, getOne)
-                .delete(verifyJWT,remove)
+                .delete(remove)
                 .put(verifyJWT, updateUser)
 
 module.exports = userRouter;
