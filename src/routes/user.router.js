@@ -4,6 +4,12 @@ const verifyJWT = require("../utils/verifyJWT")
 
 const userRouter = express.Router();
 
+userRouter.route("/verify/:code")
+                .get(verifiyEmail)
+
+userRouter.route("/reset_password/:code")
+                .post(newPassword)
+
 userRouter.route("/")
                 .get(getAll)
 		.post(create)
@@ -16,12 +22,6 @@ userRouter.route("/login")
 
 userRouter.route("/reset_password")
                 .post(resetpassword)
-
-userRouter.route("/verify/:code")
-                .get(verifiyEmail)
-
-userRouter.route("/reset_password/:code")
-                .post(newPassword)
 
 userRouter.route("/:id")
                 .get(verifyJWT, getOne)
