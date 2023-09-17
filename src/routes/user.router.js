@@ -11,7 +11,7 @@ userRouter.route("/reset_password/:code")
                 .post(newPassword)
 
 userRouter.route("/")
-                .get(getAll)
+                .get(verifyJWT, getAll)
 		.post(create)
 
 userRouter.route("/me")
@@ -25,7 +25,7 @@ userRouter.route("/reset_password")
 
 userRouter.route("/:id")
                 .get(verifyJWT, getOne)
-                .delete(remove)
+                .delete(verifyJWT, remove)
                 .put(verifyJWT, updateUser)
 
 module.exports = userRouter;
