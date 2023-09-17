@@ -65,7 +65,7 @@ const remove = catchError(async(req, res)=>{
     await User.destroy({where:{id}})
     return res.sendStatus(204)
 })
-const verifiyEmail = catchError(async(req, res)=>{
+const verifyEmail = catchError(async(req, res)=>{
     const {code} = req.params;
     const emailCode = await EmailCode.findOne({where: {code}})
 
@@ -139,7 +139,7 @@ const newPassword = ( async(req, res)=>{
 module.exports = {
     create,
     remove,
-    verifiyEmail,
+    verifyEmail,
     login,
     loggedUser,
     getAll,
