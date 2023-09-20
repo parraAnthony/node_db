@@ -39,7 +39,7 @@ const create = catchError(async(req, res) => {
         image
     })
     const code = require('crypto').randomBytes(32).toString('hex')
-    const link = `${frontBaseUrl}/auth/verify/${code}`
+    const link = `${frontBaseUrl}/auth/verify_email/${code}`
 
     await EmailCode.create({
         code,
