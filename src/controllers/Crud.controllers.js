@@ -29,13 +29,14 @@ const deleteCrud = catchError(async(req, res)=>{
 const updateCrud = catchError(async(req, res)=>{
     const {id} = req.params;
     const {first_name, last_name, email, password, birthday} = req.body;
-    const crud = await Crud.update({
+     await Crud.update({
         first_name,
         last_name,
         email,
         password,
         birthday
-    }, {where: {id}, returning: true });
+    }, {where: {id}, returning: false });
+    const crud = await Crud.findByPk(id)
     return res.json(crud)
 })
 

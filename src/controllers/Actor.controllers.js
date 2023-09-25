@@ -26,13 +26,14 @@ const removeActor = catchError(async(req, res)=>{
 const updateActor = catchError(async(req, res)=>{
     const {id}= req.params;
     const { firstName, lastName, nationality, image, birthday} = req.body
-    const actor = await Actor.update( {
+    await Actor.update( {
         firstName,
         lastName,
         nationality,
         image,
         birthday
-    },{where: {id}, returning: true})
+    },{where: {id}, returning: false})
+    const actor = await Actor.findByPk(id)
     return res.json(actor)
 })
 

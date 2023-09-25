@@ -21,12 +21,14 @@ const moviePost = catchError(async(req, res)=>{
 })
 const updateMovie = catchError(async(req, res)=>{
     const {id} = req.params;
-    const movie = await Movie.update({
+    const { name, image, synopsis, releaseYear} = req.body
+    await Movie.update({
         name,
         image, 
         synopsis, 
         releaseYear
-    }, {where: {id}, returning: true})
+    }, {where: {id}, returning: false})
+    const movie = await Movie.findByPk(id)
     res.json(movie)
 })
 

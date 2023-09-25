@@ -27,13 +27,14 @@ const removeDirector = catchError(async(req, res)=>{
 const updateDirector = catchError(async(req, res)=>{
     const {id}= req.params;
     const { firstName, lastName, nationality, image, birthday} = req.body
-    const director = await Director.update( {
+    await Director.update( {
         firstName,
         lastName,
         nationality,
         image,
         birthday
-    },{where: {id}, returning: true})
+    },{where: {id}, returning: false})
+    const director = await Director.findByPk(id)
     return res.json(director)
 })
 

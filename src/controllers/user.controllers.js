@@ -20,10 +20,11 @@ const getOne = catchError(async(req, res)=>{
 const updateUser = catchError(async(req, res)=>{
     const {id}=req.params
     const {firstName, lastName} = req.body;
-    const user = await User.update({
+    await User.update({
         firstName,
         lastName
-    },{where: {id}, returning: true })
+    },{where: {id}, returning: false })
+    const user = await User.findByPk(id)
     return res.json(user)
 })
 

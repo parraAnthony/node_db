@@ -17,10 +17,20 @@ const removeGenre = catchError(async(req, res)=>{
     await Genre.destroy({ where: {id} })
     return res.sendStatus(204)
 })
+const updateGenre = catchError(async(req, res)=>{
+    const {id} = req.params
+    const { name } = req.body
+    await Genre.update({
+        name
+    }, {where: {id}, returning: false})
+    const genre = await Genre.findByPk(id)
+    return res.json(genre)
+})
 
 
 module.exports = {
     getAllGenre,
     postGenre,
-    removeGenre
+    removeGenre,
+    updateGenre
 }
